@@ -1,0 +1,20 @@
+# create Dockerfile to run get-weather on raspberry pi
+FROM balenalib/%%BALENA_MACHINE_NAME%%-python:3-stretch-run
+
+# set working directory
+WORKDIR /usr/src/app
+
+# copy requirements.txt for better cache on later pushes
+COPY requirements.txt requirements.txt
+
+# pip install python dependencies from requirements.txt on balena build server
+RUN pip install -r requirements.txt
+
+# copy files from project root to container working dir
+COPY . ./
+
+# Enable udevd so that plugged dynamic hardware devices show up in our container.
+ENV UDEV=1
+
+# main.py will run when container starts up on the device
+CMD ["python","-u","src/getWeather.py"]
