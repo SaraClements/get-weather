@@ -6,6 +6,7 @@ WORKDIR /usr/src/app
 
 # install dependencies for numpy
 RUN install_packages gfortran
+RUN install_packages build-essential
 
 # copy requirements.txt for better cache on later pushes
 COPY requirements.txt requirements.txt
