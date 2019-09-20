@@ -4,6 +4,9 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-python:3-stretch-run
 # set working directory
 WORKDIR /usr/src/app
 
+# install dependencies for numpy
+RUN install_packages gfortran
+
 # copy requirements.txt for better cache on later pushes
 COPY requirements.txt requirements.txt
 
