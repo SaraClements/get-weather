@@ -48,7 +48,7 @@ def output_weather():
 
 # create dated filename - will control when new file is created (at new month)
 def create_filename():
-	filepath = '/mnt/e/VirtualEnvs/data/'
+	filepath = ''
 	filename = filepath + "currentweather_" + str(datetime.now().year) + "_" + str(datetime.now().month) + ".csv"
 	return filename
 
